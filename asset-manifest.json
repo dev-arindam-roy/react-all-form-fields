@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-all-form-fields/static/css/main.2ab84c53.css",
+    "main.js": "/react-all-form-fields/static/js/main.c1379208.js",
+    "static/js/453.e627455d.chunk.js": "/react-all-form-fields/static/js/453.e627455d.chunk.js",
+    "index.html": "/react-all-form-fields/index.html",
+    "main.2ab84c53.css.map": "/react-all-form-fields/static/css/main.2ab84c53.css.map",
+    "main.c1379208.js.map": "/react-all-form-fields/static/js/main.c1379208.js.map",
+    "453.e627455d.chunk.js.map": "/react-all-form-fields/static/js/453.e627455d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2ab84c53.css",
+    "static/js/main.c1379208.js"
+  ]
+}
