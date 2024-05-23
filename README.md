@@ -1,5 +1,9 @@
 # React Application with all types of form fields
 
+## Check It!
+
+[https://dev-arindam-roy.github.io/react-all-form-fields/](https://dev-arindam-roy.github.io/react-all-form-fields/)
+
 ```js
 import React, { useState } from "react";
 import "./App.css";
@@ -577,4 +581,382 @@ const App = () => {
 
 export default App;
 
+```
+
+# Another One
+
+```js
+import React, { useState } from 'react';
+
+const citiesArrObj = [
+  { id: 1, name: 'Kolkata' },
+  { id: 2, name: 'Mumbai' },
+  { id: 3, name: 'Delhi' },
+  { id: 4, name: 'Channei' },
+  { id: 5, name: 'Rajasthan' },
+  { id: 6, name: 'Madurai' },
+  { id: 7, name: 'Panjab' },
+  { id: 8, name: 'Bangalore' },
+  { id: 9, name: 'Karala' },
+  { id: 10, name: 'Kashmir' },
+];
+
+const sexArr = ['Male', 'Female', 'Others'];
+
+const expLevelsArrObj = [
+  { id: 1, name: 'Expert', level: 5 },
+  { id: 2, name: 'Senior', level: 4 },
+  { id: 3, name: 'Medium', level: 3 },
+  { id: 4, name: 'Intermidiate', level: 2 },
+  { id: 5, name: 'Bigener', level: 1 },
+];
+
+const skillsArrObj = [
+  { id: 1, name: 'Laravel', type: 'Backend' },
+  { id: 2, name: 'Node Js', type: 'Backend' },
+  { id: 3, name: 'Python', type: 'Backend' },
+  { id: 4, name: 'React Js', type: 'Frontend' },
+  { id: 5, name: 'Angular Js', type: 'Frontend' },
+  { id: 6, name: 'Vue Js', type: 'Frontend' },
+  { id: 7, name: 'MySQL', type: 'Database' },
+  { id: 8, name: 'MongoDB', type: 'Database' },
+  { id: 9, name: 'Sqlite', type: 'Database' },
+  { id: 10, name: 'Bootstrap', type: 'UI/UX' },
+];
+
+const defaultUserState = {
+  firstname: '',
+  lastname: '',
+  email: '',
+  phonenumber: '',
+  address: '',
+  city: '',
+  sex: sexArr[0],
+  exp: [],
+  skills: [],
+};
+
+const UseStateBsApplication = () => {
+  const [user, setUser] = useState(defaultUserState);
+  const [userArrObj, setUserArrObj] = useState([]);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setUserArrObj([...userArrObj, user]);
+    handleFormReset();
+  };
+  const handleFormReset = () => {
+    setUser(defaultUserState);
+  }
+  return (
+    <>
+      <div className='container py-5'>
+        <div className='row'>
+          <div className='col-md-4'>
+            <div className='card'>
+              <div className='card-header'>
+                <h3>User Form</h3>
+              </div>
+              <div className='card-body'>
+                <form onSubmit={handleFormSubmit}>
+                  <div className='form-group mb-2'>
+                    <label htmlFor='firstname'>First Name:</label>
+                    <input
+                      type='text'
+                      name='firstname'
+                      id='firstname'
+                      className='form-control'
+                      placeholder='First Name'
+                      value={user.firstname}
+                      onChange={(e) =>
+                        setUser({ ...user, firstname: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label htmlFor='lastname'>Last Name:</label>
+                    <input
+                      type='text'
+                      name='lastname'
+                      id='lastname'
+                      className='form-control'
+                      placeholder='Last Name'
+                      value={user.lastname}
+                      onChange={(e) =>
+                        setUser({ ...user, lastname: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label htmlFor='email'>Email Id:</label>
+                    <input
+                      type='email'
+                      name='email'
+                      id='email'
+                      className='form-control'
+                      placeholder='Email Id'
+                      value={user.email}
+                      onChange={(e) =>
+                        setUser({ ...user, email: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label htmlFor='phonenumber'>Phone Number:</label>
+                    <input
+                      type='tel'
+                      name='phonenumber'
+                      id='phonenumber'
+                      className='form-control'
+                      placeholder='Phone Number'
+                      value={user.phonenumber}
+                      onChange={(e) =>
+                        setUser({ ...user, phonenumber: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label htmlFor='address'>Address:</label>
+                    <textarea
+                      name='address'
+                      id='address'
+                      className='form-control'
+                      value={user.address}
+                      onChange={(e) =>
+                        setUser({ ...user, address: e.target.value })
+                      }
+                    ></textarea>
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label htmlFor='city'>City:</label>
+                    <select
+                      name='city'
+                      id='city'
+                      className='form-select'
+                      value={user.city}
+                      onChange={(e) =>
+                        setUser({ ...user, city: e.target.value })
+                      }
+                    >
+                      <option value=''>-City-</option>
+                      {citiesArrObj.length > 0 &&
+                        citiesArrObj.map((item, index) => {
+                          return (
+                            <option key={index} value={item.id}>
+                              {item.name}
+                            </option>
+                          );
+                        })}
+                    </select>
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label>Sex:</label>
+                    {sexArr.length > 0 &&
+                      sexArr.map((item, index) => {
+                        return (
+                          <div className='form-check ms-4' key={index}>
+                            <input
+                              type='radio'
+                              name='sex'
+                              className='form-check-input'
+                              id={'sex' + index}
+                              checked={
+                                user.sex === '' && index === 0
+                                  ? true
+                                  : user.sex === item
+                                  ? true
+                                  : false
+                              }
+                              value={item}
+                              onChange={(e) =>
+                                setUser({ ...user, sex: e.target.value })
+                              }
+                            />
+                            <label
+                              htmlFor={'sex' + index}
+                              className='form-check-label'
+                            >
+                              {item}
+                            </label>
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label>Exp Level:</label>
+                    {expLevelsArrObj.length > 0 &&
+                      expLevelsArrObj.map((item, index) => {
+                        return (
+                          <div className='form-check ms-4' key={index}>
+                            <input
+                              type='checkbox'
+                              name='exp'
+                              className='form-check-input'
+                              id={'exp' + index}
+                              value={item.id}
+                              checked={user.exp.includes(item.id.toString())}
+                              onChange={(e) =>
+                                e.target.checked
+                                  ? setUser({
+                                      ...user,
+                                      exp: [...user.exp, e.target.value],
+                                    })
+                                  : setUser({
+                                      ...user,
+                                      exp: user.exp.filter(
+                                        (v) => v !== e.target.value
+                                      ),
+                                    })
+                              }
+                            />
+                            <label
+                              htmlFor={'exp' + index}
+                              className='form-check-label'
+                            >
+                              {item.name}
+                              <span className='ms-2'>
+                                <small>({item.level})</small>
+                              </span>
+                            </label>
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <div className='form-group mb-2'>
+                    <label>Skills:</label>
+                    {skillsArrObj.length > 0 &&
+                      skillsArrObj.map((item, index) => {
+                        return (
+                          <div className='form-check ms-4' key={index}>
+                            <input
+                              type='checkbox'
+                              name='skills'
+                              className='form-check-input'
+                              id={'skill' + index}
+                              value={item.id}
+                              checked={user.skills.includes(item.id.toString())}
+                              onChange={(e) =>
+                                e.target.checked
+                                  ? setUser({
+                                      ...user,
+                                      skills: [...user.skills, e.target.value],
+                                    })
+                                  : setUser({
+                                      ...user,
+                                      skills: user.skills.filter(
+                                        (v) => v !== e.target.value
+                                      ),
+                                    })
+                              }
+                            />
+                            <label
+                              htmlFor={'skill' + index}
+                              className='form-check-label'
+                            >
+                              {item.name}
+                              <span className='ms-2'>
+                                <small>[{item.type}]</small>
+                              </span>
+                            </label>
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <div className='form-group mb-2 mt-4 text-end'>
+                    <button type='button' className='btn btn-danger' onClick={handleFormReset}>
+                      Reset
+                    </button>
+                    &nbsp;
+                    <button type='submit' className='btn btn-success'>
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className='col-md-8'>
+            <div className='row'>
+              <div className='col-md-12'>
+                <div className='alert alert-success'>
+                  <textarea className='form-control' value={JSON.stringify(user)} readOnly></textarea>
+                </div>
+              </div>
+              <div className='col-md-12'>
+                <div className='alert alert-primary'>
+                  <textarea className='form-control' value={JSON.stringify(userArrObj)} readOnly></textarea>
+                </div>
+              </div>
+              <div className='col-md-12'>
+                <table className='table table-bordered table-sm'>
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Skill</th>
+                            <th>Exp Level</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            userArrObj.length > 0 &&
+                            userArrObj.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>
+                                            {item.firstname} {item.lastname} <br/> {item.sex}
+                                        </td>
+                                        <td>
+                                            {item.email} <br/> {item.phonenumber}
+                                        </td>
+                                        <td>
+                                            {
+                                                citiesArrObj.length > 0 &&
+                                                citiesArrObj.map((v, i) => {
+                                                    return v.id === parseInt(item.city) && (<span key={i}>{v.name}</span>)
+                                                })
+                                            }
+                                            <br/>
+                                            {item.address}
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                {
+                                                    skillsArrObj.length > 0 &&
+                                                    skillsArrObj.map((v, i) => {
+                                                        return item.skills.includes(v.id.toString()) && (<li key={i}>{v.name} ({v.type})</li>)
+                                                    })
+                                                }
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                {
+                                                    expLevelsArrObj.length > 0 &&
+                                                    expLevelsArrObj.map((v, i) => {
+                                                        return item.exp.includes(v.id.toString()) && (<li key={i}>{v.name} ({v.level})</li>)
+                                                    })
+                                                }
+                                            </ul>
+                                        </td>
+                                        <td>#</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default UseStateBsApplication;
 ```
